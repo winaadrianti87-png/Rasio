@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Color Ratio - Laboratorium Warna</title>
+    <!-- Tailwind CSS for modern responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+        /* Custom scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between">
+
+    <header class="bg-indigo-700 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white p-2 rounded-xl text-indigo-700 font-extrabold text-2xl shadow">🎨</div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-extrabold tracking-wide">Smart Color Ratio</h1>
+                    <p class="text-xs text-indigo-200">Laboratorium Warna Matematika Kelas VI SD</p>
+                </div>
+            </div>
+            <!-- Navigation Tabs / Menu Selector -->
+            <nav class="flex flex-wrap gap-1 mt-2 md:mt-0" id="nav-menu">
+                <button onclick="switchTab('beranda')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-800 text-white shadow" data-tab="beranda">🏠 Beranda</button>
+                <button onclick="switchTab('tujuan')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white" data-tab="tujuan">🎯 Tujuan</button>
+                <button onclick="switchTab('pemantik')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">💡 Pemantik</button>
+                <button onclick="switchTab('memahami')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">📖 Memahami</button>
+                <button onclick="switchTab('simulasi')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">🧪 Simulasi</button>
+                <button onclick="switchTab('tantangan')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">🏆 Tantangan</button>
+                <button onclick="switchTab('koding')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">💻 Koding</button>
+                <button onclick="switchTab('kelompok')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">👥 Kelompok</button>
+                <button onclick="switchTab('refleksi')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">📝 Refleksi</button>
+                <button onclick="switchTab('hasil')" class="nav-btn px-3 py-2 rounded-lg text-sm font-semibold transition bg-indigo-600 hover:bg-indigo-800 text-white">⭐ Skor</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6">
+
+        <!-- TAB 1: BERANDA -->
+        <section id="tab-beranda" class="tab-content">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between">
+                <div class="max-w-xl mb-6 md:mb-0">
+                    <span class="bg-white/25 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Matematika Kelas 6</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4 leading-tight">Belajar Rasio Lewat Campuran Warna!</h2>
+                    <p class="text-indigo-100 text-base md:text-lg mb-6">Selamat datang di Laboratorium Warna Pintar! Mari bereksperimen mencampur warna merah dan biru, temukan rahasia perbandingan senilai, dan hubungkan dengan dunia teknologi.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="switchTab('pemantik')" class="bg-white text-indigo-700 hover:bg-indigo-50 font-bold px-6 py-3 rounded-xl shadow-lg transition text-base">🚀 Mulai Belajar</button>
+                        <button onclick="switchTab('simulasi')" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition text-base border border-indigo-400">🧪 Buka Simulasi</button>
+                    </div>
+                </div>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20 flex flex-col items-center">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-500 shadow-inner flex items-center justify-center text-white font-bold text-lg">2</div>
+                        <span class="text-2xl font-black">:</span>
+                        <div class="w-12 h-12 rounded-full bg-blue-500 shadow-inner flex items-center justify-center text-white font-bold text-lg">3</div>
+                    </div>
+                    <div class="w-28 h-28 rounded-full shadow-2xl transition-all duration-500 flex items-center justify-center border-4 border-white/40" id="home-color-preview" style="background-color: rgb(102, 0, 153);">
+                        <span class="text-white text-xs font-bold bg-black/40 px-2 py-1 rounded">Hasil Warna</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                    <div class="text-3xl mb-3">👁️</div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">1. Mengamati & Mencoba</h3>
+                    <p class="text-slate-600 text-sm">Amati perubahan takaran tetes warna merah dan biru secara visual dan real-time.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                    <div class="text-3xl mb-3">🧩</div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">2. Tantangan Interaktif</h3>
+                    <p class="text-slate-600 text-sm">Uji pemahamanmu dengan menyelesaikan teka-teki rasio dan perbandingan senilai.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-100">
+                    <div class="text-3xl mb-3">💻</div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">3. Logika & Koding</h3>
+                    <p class="text-slate-600 text-sm">Pahami bagaimana komputer memproses aturan rasio matematika menggunakan logika sederhana.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: TUJUAN PEMBELAJARAN -->
+        <section id="tab-tujuan" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="text-3xl">🎯</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Tujuan Pembelajaran</h2>
+                </div>
+                <p class="text-slate-600 mb-6">Melalui kegiatan di laboratorium warna ini, kamu diharapkan dapat mencapai target berikut:</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-4 flex-shrink-0">1</span>
+                        <p class="text-slate-700 font-medium">Memahami rasio sebagai perbandingan dua besaran dalam kehidupan sehari-hari.</p>
+                    </div>
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-4 flex-shrink-0">2</span>
+                        <p class="text-slate-700 font-medium">Menentukan dan menghitung nilai rasio dengan benar menggunakan takaran warna.</p>
+                    </div>
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-4 flex-shrink-0">3</span>
+                        <p class="text-slate-700 font-medium">Menerapkan konsep rasio pada situasi nyata (seperti resep masakan, campuran cat, atau skala).</p>
+                    </div>
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-4 flex-shrink-0">4</span>
+                        <p class="text-slate-700 font-medium">Memahami bahwa perubahan salah satu besaran harus mempertahankan perbandingan agar tetap proporsional (senilai).</p>
+                    </div>
+                    <div class="flex items-start bg-indigo-50 p-4 rounded-xl border border-indigo-100">
+                        <span class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm mr-4 flex-shrink-0">5</span>
+                        <p class="text-slate-700 font-medium">Menghubungkan konsep rasio dengan logika pemrograman atau koding komputer.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="switchTab('pemantik')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl shadow transition">Lanjut ke Pertanyaan Pemantik ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: PEMBUKAAN - PERTANYAAN PEMANTIK -->
+        <section id="tab-pemantik" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-3xl mx-auto">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">💡</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Pertanyaan Pemantik</h2>
+                </div>
+                <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl mb-6">
+                    <p class="text-amber-900 font-semibold text-lg italic">“Jika 2 bagian warna merah dicampur dengan 3 bagian warna biru, bagaimana agar perbandingannya tetap sama ketika jumlah warna diperbanyak?”</p>
+                </div>
+
+                <div class="space-y-3 mb-6" id="pemantik-options">
+                    <label class="flex items-center p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-500 cursor-pointer transition option-card">
+                        <input type="radio" name="pemantik" value="A" class="w-5 h-5 text-indigo-600 mr-3">
+                        <span class="text-slate-700 font-medium"><strong>A.</strong> Menambah kedua warna dengan jumlah yang sama (misal ditambah 2 tetes semua)</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-500 cursor-pointer transition option-card">
+                        <input type="radio" name="pemantik" value="B" class="w-5 h-5 text-indigo-600 mr-3">
+                        <span class="text-slate-700 font-medium"><strong>B.</strong> Mengalikan kedua bagian dengan bilangan yang sama (misal dikali 2 semua)</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-500 cursor-pointer transition option-card">
+                        <input type="radio" name="pemantik" value="C" class="w-5 h-5 text-indigo-600 mr-3">
+                        <span class="text-slate-700 font-medium"><strong>C.</strong> Menambah salah satu warna saja agar warnanya lebih terang</span>
+                    </label>
+                    <label class="flex items-center p-4 rounded-xl border-2 border-slate-200 hover:border-indigo-500 cursor-pointer transition option-card">
+                        <input type="radio" name="pemantik" value="D" class="w-5 h-5 text-indigo-600 mr-3">
+                        <span class="text-slate-700 font-medium"><strong>D.</strong> Mengurangi salah satu warna sampai seimbang</span>
+                    </label>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button onclick="checkPemantik()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Periksa Jawaban</button>
+                    <div id="pemantik-feedback" class="font-bold text-lg hidden"></div>
+                </div>
+
+                <div id="pemantik-next" class="mt-6 hidden text-right">
+                    <button onclick="switchTab('memahami')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Lanjut ke Pemahaman Materi ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: MEMAHAMI -->
+        <section id="tab-memahami" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">📖</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Mari Memahami Rasio Senilai</h2>
+                </div>
+                <p class="text-slate-600 mb-6">Perhatikan perbandingan takaran warna merah dan biru di bawah ini:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Card 1 -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center">
+                        <div class="text-lg font-bold text-slate-700 mb-3">Kondisi Awal</div>
+                        <div class="flex justify-center items-center space-x-4 mb-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-xl shadow">2</div>
+                                <span class="text-xs font-bold text-red-600 mt-1">Merah</span>
+                            </div>
+                            <span class="text-2xl font-black text-slate-400">:</span>
+                            <div class="flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-xl shadow">3</div>
+                                <span class="text-xs font-bold text-blue-600 mt-1">Biru</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-600">Rasio Dasar = <strong>2 : 3</strong></p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-200 text-center">
+                        <div class="text-lg font-bold text-indigo-700 mb-3">Diperbesar 2 Kali</div>
+                        <div class="flex justify-center items-center space-x-4 mb-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-red-500 text-white flex items-center justify-center font-bold text-xl shadow">4</div>
+                                <span class="text-xs font-bold text-red-600 mt-1">2 × 2</span>
+                            </div>
+                            <span class="text-2xl font-black text-indigo-400">:</span>
+                            <div class="flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-xl shadow">6</div>
+                                <span class="text-xs font-bold text-blue-600 mt-1">3 × 2</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-indigo-700">Rasio Baru = <strong>4 : 6</strong></p>
+                    </div>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 p-6 rounded-2xl mb-6">
+                    <h3 class="font-bold text-emerald-800 text-lg mb-2">✨ Konsep Utama:</h3>
+                    <p class="text-emerald-900 text-sm leading-relaxed mb-3">
+                        Rasio <strong>2 : 3</strong> dan <strong>4 : 6</strong> adalah <strong>Rasio yang Setara</strong> (Proporsional). Ini karena kedua bilangan pada rasio dikalikan dengan faktor pengali yang sama yaitu <strong>× 2</strong>.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-bold">
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-800">2 : 3</span>
+                        <span class="bg-emerald-200 px-3 py-1.5 rounded-lg text-emerald-900">=</span>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-800">4 : 6 (×2)</span>
+                        <span class="bg-emerald-200 px-3 py-1.5 rounded-lg text-emerald-900">=</span>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-800">6 : 9 (×3)</span>
+                        <span class="bg-emerald-200 px-3 py-1.5 rounded-lg text-emerald-900">=</span>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-emerald-300 text-emerald-800">8 : 12 (×4)</span>
+                    </div>
+                </div>
+
+                <!-- Interactive check question -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-3">Uji Pemahaman Cepat:</h4>
+                    <p class="text-slate-700 text-sm mb-4">“Apakah rasio <strong>2 : 3</strong> dan <strong>6 : 9</strong> memiliki perbandingan warna yang sama (senilai)?”</p>
+                    <div class="flex gap-4 mb-4">
+                        <button onclick="answerMemahami(true)" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow transition">YA, Sama!</button>
+                        <button onclick="answerMemahami(false)" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 rounded-xl shadow transition">TIDAK</button>
+                    </div>
+                    <div id="memahami-feedback" class="font-semibold text-sm hidden"></div>
+                </div>
+
+                <div class="mt-6 text-right">
+                    <button onclick="switchTab('simulasi')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl shadow transition">Lanjut ke Simulasi Rasio ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: SIMULASI INTERAKTIF -->
+        <section id="tab-simulasi" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-md border border-slate-100 max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                    <div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-3xl">🧪</span>
+                            <h2 class="text-2xl font-extrabold text-slate-800">Simulasi Pencampuran Warna</h2>
+                        </div>
+                        <p class="text-slate-600 text-sm mt-1">Target Rasio Dasar: <span class="font-bold text-indigo-600">2 : 3</span> (Merah : Biru)</p>
+                    </div>
+                    <div class="mt-3 md:mt-0 bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-200">
+                        <span class="text-xs text-indigo-700 font-bold uppercase tracking-wider">Status Rasio:</span>
+                        <div id="sim-indicator" class="text-lg font-extrabold text-amber-600">Sedang Dicoba...</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                    <!-- Controls Column -->
+                    <div class="space-y-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <!-- Merah Control -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-red-600 flex items-center">🔴 Jumlah Merah</span>
+                                <span id="val-merah" class="text-2xl font-black text-red-600">2</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="changeColorCount('merah', -1)" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-3 rounded-xl shadow transition">−</button>
+                                <button onclick="changeColorCount('merah', 1)" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold text-xl py-3 rounded-xl shadow transition">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Biru Control -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-blue-600 flex items-center">🔵 Jumlah Biru</span>
+                                <span id="val-biru" class="text-2xl font-black text-blue-600">3</span>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button onclick="changeColorCount('biru', -1)" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xl py-3 rounded-xl shadow transition">−</button>
+                                <button onclick="changeColorCount('biru', 1)" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xl py-3 rounded-xl shadow transition">+</button>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button onclick="ujiRasioSimulasi()" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base">🔍 Uji Rasio</button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Beaker / Mixing Result -->
+                    <div class="flex flex-col items-center justify-center bg-slate-100 p-6 rounded-2xl border border-slate-200">
+                        <div class="text-sm font-bold text-slate-700 mb-2">Wadah Hasil Campuran</div>
+                        <div id="sim-beaker" class="w-36 h-48 rounded-b-3xl rounded-t-lg border-4 border-slate-400 bg-white relative overflow-hidden shadow-inner flex flex-col justify-end p-2 transition-all duration-500">
+                            <!-- Liquid container inside -->
+                            <div id="sim-liquid" class="w-full rounded-b-2xl transition-all duration-500 flex items-center justify-center" style="height: 60%; background-color: rgb(102, 0, 153);">
+                                <span class="text-white text-xs font-bold drop-shadow">Campuran</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <div class="text-2xl font-black text-slate-800" id="sim-ratio-display">2 : 3</div>
+                            <div class="text-xs text-slate-500 mt-1" id="sim-explanation">Rasio saat ini: Setara dengan target dasar.</div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Droplets Grid -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <div class="text-sm font-bold text-slate-700 mb-3">Visual Tetesan Warna:</div>
+                        <div class="mb-4">
+                            <div class="text-xs font-bold text-red-600 mb-1">Tetes Merah (<span id="count-m-txt">2</span>):</div>
+                            <div id="grid-merah" class="flex flex-wrap gap-2 min-h-[40px] p-2 bg-white rounded-xl border border-red-100"></div>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-blue-600 mb-1">Tetes Biru (<span id="count-b-txt">3</span>):</div>
+                            <div id="grid-biru" class="flex flex-wrap gap-2 min-h-[40px] p-2 bg-white rounded-xl border border-blue-100"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sim-feedback-box" class="mt-6 p-4 rounded-xl font-bold text-center hidden"></div>
+
+                <div class="mt-6 flex justify-between items-center">
+                    <button onclick="resetSimulasi()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition">Coba Lagi / Reset</button>
+                    <button onclick="switchTab('tantangan')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Lanjut ke Tantangan Rasio ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: TANTANGAN RASIO -->
+        <section id="tab-tantangan" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-3xl">🏆</span>
+                        <h2 class="text-2xl font-extrabold text-slate-800">Tantangan Pencampur Warna</h2>
+                    </div>
+                    <div class="bg-indigo-50 px-4 py-2 rounded-xl text-indigo-700 font-bold text-sm" id="challenge-score-board">Skor: 0</div>
+                </div>
+
+                <!-- Challenge Container -->
+                <div id="challenge-container" class="space-y-6">
+                    <!-- Dynamic Challenge injected via JS -->
+                </div>
+
+                <div class="mt-8 flex justify-between items-center">
+                    <button onclick="prevChallenge()" id="btn-prev-c" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm transition hidden">← Sebelumnya</button>
+                    <div class="ml-auto">
+                        <button onclick="switchTab('koding')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Lanjut ke Koding ➔</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 7: HUBUNGKAN DENGAN KODING -->
+        <section id="tab-koding" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">💻</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Hubungkan Rasio dengan Koding</h2>
+                </div>
+                <p class="text-slate-600 mb-6">Tahukah kamu? Komputer atau robot pencampur cat bekerja menggunakan aturan matematika dan perbandingan (logika rasio).</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Code Editor Box -->
+                    <div class="bg-slate-900 text-emerald-400 p-6 rounded-2xl font-mono text-sm shadow-xl border border-slate-800">
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-slate-400 text-xs">
+                            <span>robot_warna.js</span>
+                            <span class="text-indigo-400">JavaScript Logic</span>
+                        </div>
+                        <p class="text-slate-300">// Menentukan aturan rasio cat</p>
+                        <p class="text-purple-400">let <span class="text-white">targetMerah</span> = <span class="text-amber-400">2</span>;</p>
+                        <p class="text-purple-400">let <span class="text-white">targetBiru</span> = <span class="text-amber-400">3</span>;</p>
+                        <br>
+                        <p class="text-blue-400">function <span class="text-yellow-300">hitungBiru</span>(merahBaru) &#123;</p>
+                        <p class="pl-4 text-slate-300">let <span class="text-white">faktor</span> = merahBaru / targetMerah;</p>
+                        <p class="pl-4 text-purple-400">return targetBiru * faktor;</p>
+                        <p class="text-blue-400">&#125;</p>
+                        <br>
+                        <p class="text-slate-300">// Jika merah menjadi 4 tetes:</p>
+                        <p class="text-emerald-300">console.log(hitungBiru(4)); <span class="text-slate-500">// Output: 6</span></p>
+                    </div>
+
+                    <!-- Visual Block Box -->
+                    <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-200 flex flex-col justify-center items-center text-center">
+                        <div class="text-sm font-bold text-indigo-800 mb-4">Visualisasi Alur Blok Logika</div>
+                        <div class="space-y-3 w-full max-w-xs">
+                            <div class="bg-red-500 text-white p-3 rounded-xl font-bold shadow">
+                                [MERAH] = 4 <span class="text-xs bg-black/20 px-2 py-0.5 rounded ml-2">× 2 faktor</span>
+                            </div>
+                            <div class="text-indigo-600 font-extrabold text-xl">↓ ↕ ↓</div>
+                            <div class="bg-blue-500 text-white p-3 rounded-xl font-bold shadow">
+                                [BIRU] = 6 <span class="text-xs bg-black/20 px-2 py-0.5 rounded ml-2">× 2 faktor</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-indigo-700 mt-4">Komputer mengikuti aturan perkalian faktor yang sama agar warna tetap proporsional!</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 p-5 rounded-2xl mb-6">
+                    <h4 class="font-bold text-amber-900 mb-1">🤖 Coba Uji Logika Koding:</h4>
+                    <p class="text-amber-800 text-sm mb-3">Jika aturan rasio adalah <strong class="text-indigo-700">2 : 3</strong>, dan robot memasukkan <strong class="text-indigo-700">8 tetes merah</strong>, berapa tetes biru yang harus dikeluarkan robot?</p>
+                    <div class="flex gap-3">
+                        <input type="number" id="code-answer-input" placeholder="Masukkan angka..." class="flex-grow px-4 py-2.5 rounded-xl border border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white">
+                        <button onclick="checkCodeLogic()" class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-2.5 rounded-xl shadow transition">Jalankan Kode</button>
+                    </div>
+                    <div id="code-feedback" class="mt-3 font-semibold text-sm hidden"></div>
+                </div>
+
+                <div class="mt-6 text-right">
+                    <button onclick="switchTab('kelompok')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl shadow transition">Lanjut ke Tantangan Kelompok ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 8: TANTANGAN KELOMPOK -->
+        <section id="tab-kelompok" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">👥</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Aktivitas Tantangan Kelompok</h2>
+                </div>
+                <div class="bg-indigo-50 border-l-4 border-indigo-600 p-4 rounded-r-xl mb-6">
+                    <p class="text-indigo-900 font-bold">Instruksi untuk Guru & Kelas:</p>
+                    <p class="text-indigo-800 text-sm mt-1">Diskusikan bersama kelompok belajarmu di depan kelas menggunakan proyektor/PID. Temukan 3 rasio yang setara dengan target di bawah ini!</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-6">
+                    <div class="text-center mb-6">
+                        <span class="text-xs bg-indigo-100 text-indigo-700 font-bold px-3 py-1 rounded-full uppercase tracking-wider">Target Rasio</span>
+                        <div class="text-3xl font-black text-indigo-700 mt-2">2 : 3</div>
+                        <p class="text-xs text-slate-500 mt-1">Buatlah 3 rasio setara melalui diskusi kelompokmu.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                            <span class="text-xs font-bold text-slate-500 mb-2 block">Rasio 1 (Dasar)</span>
+                            <div class="text-xl font-bold text-slate-800">2 : 3</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                            <span class="text-xs font-bold text-slate-500 mb-2 block">Rasio 2 (×2)</span>
+                            <div class="flex justify-center items-center space-x-2">
+                                <input type="number" id="group-r2-m" value="4" class="w-16 text-center font-bold text-lg p-1.5 rounded-lg border border-slate-300">
+                                <span class="font-bold">:</span>
+                                <input type="number" id="group-r2-b" value="6" class="w-16 text-center font-bold text-lg p-1.5 rounded-lg border border-slate-300">
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 text-center shadow-sm">
+                            <span class="text-xs font-bold text-slate-500 mb-2 block">Rasio 3 (×3)</span>
+                            <div class="flex justify-center items-center space-x-2">
+                                <input type="number" id="group-r3-m" placeholder="?" class="w-16 text-center font-bold text-lg p-1.5 rounded-lg border border-slate-300">
+                                <span class="font-bold">:</span>
+                                <input type="number" id="group-r3-b" placeholder="?" class="w-16 text-center font-bold text-lg p-1.5 rounded-lg border border-slate-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button onclick="revealGroupDiscussion()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Tampilkan Pembahasan Guru</button>
+                    </div>
+
+                    <div id="group-discussion-result" class="mt-6 bg-emerald-50 border border-emerald-200 p-4 rounded-xl hidden">
+                        <h4 class="font-bold text-emerald-800 mb-2">💡 Pembahasan Guru:</h4>
+                        <p class="text-emerald-900 text-sm mb-2">• Rasio 1: <strong>2 : 3</strong> (tetap)</p>
+                        <p class="text-emerald-900 text-sm mb-2">• Rasio 2: <strong>4 : 6</strong> (hasil 2×2 dan 3×2)</p>
+                        <p class="text-emerald-900 text-sm">• Rasio 3: <strong>6 : 9</strong> (hasil 2×3 dan 3×3)</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-right">
+                    <button onclick="switchTab('refleksi')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl shadow transition">Lanjut ke Refleksi ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 9: REFLEKSI -->
+        <section id="tab-refleksi" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-4xl mx-auto">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="text-3xl">📝</span>
+                    <h2 class="text-2xl font-extrabold text-slate-800">Refleksi Pembelajaran</h2>
+                </div>
+                <p class="text-slate-600 mb-6">Jawablah pertanyaan refleksi berikut untuk mengetahui sejauh mana pemahamanmu tentang materi Rasio:</p>
+
+                <div class="space-y-6 mb-8">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-bold text-slate-800 mb-2">1. Apa yang kamu pahami tentang rasio?</label>
+                        <textarea id="ref-1" rows="2" class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-sm" placeholder="Tuliskan jawabanmu di sini..."></textarea>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-bold text-slate-800 mb-2">2. Bagaimana cara membuat rasio tetap proporsional (senilai)?</label>
+                        <textarea id="ref-2" rows="2" class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-sm" placeholder="Tuliskan jawabanmu di sini..."></textarea>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <label class="block font-bold text-slate-800 mb-2">3. Apa strategi yang paling membantu kamu memahami materi ini?</label>
+                        <textarea id="ref-3" rows="2" class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white text-sm" placeholder="Tuliskan jawabanmu di sini..."></textarea>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-200 mb-6">
+                    <h4 class="font-bold text-indigo-800 mb-3">Bagaimana perasaanmu setelah belajar hari ini?</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <label class="flex items-center space-x-2 bg-white px-4 py-2.5 rounded-xl border border-indigo-200 cursor-pointer shadow-sm">
+                            <input type="radio" name="self-eval" value="paham" class="text-indigo-600">
+                            <span class="text-sm font-semibold text-slate-700">☐ Saya sudah memahami</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-white px-4 py-2.5 rounded-xl border border-indigo-200 cursor-pointer shadow-sm">
+                            <input type="radio" name="self-eval" value="latihan" class="text-indigo-600">
+                            <span class="text-sm font-semibold text-slate-700">☐ Saya masih perlu latihan</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-white px-4 py-2.5 rounded-xl border border-indigo-200 cursor-pointer shadow-sm">
+                            <input type="radio" name="self-eval" value="bantuan" class="text-indigo-600">
+                            <span class="text-sm font-semibold text-slate-700">☐ Saya membutuhkan bantuan</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button onclick="submitRefleksi()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3 rounded-xl shadow transition">Simpan & Lihat Skor Akhir ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 10: HASIL AKHIR -->
+        <section id="tab-hasil" class="tab-content hidden">
+            <div class="bg-white rounded-3xl p-8 shadow-md border border-slate-100 max-w-3xl mx-auto text-center">
+                <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-4 shadow-inner">🏆</div>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Hasil Akhir Pembelajaran</h2>
+                <p class="text-slate-600 mb-6">Kerja luar biasa! Berikut adalah rangkuman pencapaian belajarmu di Laboratorium Warna.</p>
+
+                <div class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white p-8 rounded-3xl shadow-xl mb-6">
+                    <div class="text-sm uppercase tracking-wider font-bold text-indigo-200 mb-1">Skor Total Kamu</div>
+                    <div id="final-score-val" class="text-6xl font-black mb-3">85</div>
+                    <div id="final-predicate" class="text-xl font-bold bg-white/20 inline-block px-4 py-1.5 rounded-full backdrop-blur-sm">Pemahaman Rasio: Baik</div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 text-left">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-1">🎯 Tantangan Selesai</h4>
+                        <p class="text-slate-600 text-sm" id="summary-challenges">Semua tantangan rasio telah dikerjakan dengan baik.</p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-1">🚀 Rekomendasi Selanjutnya</h4>
+                        <p class="text-slate-600 text-sm">Teruslah berlatih menentukan perbandingan senilai dalam kehidupan sehari-hari!</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4">
+                    <button onclick="switchTab('beranda')" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">🏠 Kembali ke Beranda</button>
+                    <button onclick="resetApp()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-xl shadow transition">🔄 Ulangi Dari Awal</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            Smart Color Ratio • Media Pembelajaran Interaktif Matematika Kelas VI SD • Dirancang untuk PID / Infocus & Perangkat Mobile
+        </div>
+    </footer>
+
+    <script>
+        // Global State variables
+        let score = 0;
+        let currentTab = 'beranda';
+        
+        // Simulasi state
+        let simMerah = 2;
+        let simBiru = 3;
+
+        // Challenge state
+        let currentChallengeIndex = 0;
+        const challenges = [
+            {
+                id: 1,
+                title: "Tantangan 1: Mencari Tetes Merah",
+                desc: "Rasio merah : biru = 2 : 3. Jika tersedia 6 bagian biru, berapa bagian merah?",
+                targetAns: 4,
+                hint: "Gunakan perkalian silang atau faktor pengali: 3 dikali berapa jadi 6? (×2). Maka merah 2 harus dikali 2!"
+            },
+            {
+                id: 2,
+                title: "Tantangan 2: Mencari Tetes Biru",
+                desc: "Rasio merah : biru = 3 : 4. Jika merah menjadi 6 bagian, berapa bagian biru?",
+                targetAns: 8,
+                hint: "Periksa faktor pengali pada merah: 3 menjadi 6 berarti dikali 2 (×2). Kalikan juga biru dengan bilangan yang sama!"
+            },
+            {
+                id: 3,
+                title: "Tantangan 3: Menentukan Kelipatan Rasio",
+                desc: "Jika rasio dasar adalah 4 : 5, tuliskan salah satu jumlah merah yang senilai jika biru menjadi 15 bagian.",
+                targetAns: 12,
+                hint: "Biru 5 menjadi 15 dikali 3 (×3). Maka merah 4 harus dikali 3!"
+            }
+        ];
+        let challengeScores = [0, 0, 0];
+
+        // Tab Switching Function
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-800', 'shadow');
+                btn.classList.add('bg-indigo-600');
+                if(btn.getAttribute('data-tab') === tabId) {
+                    btn.classList.add('bg-indigo-800', 'shadow');
+                    btn.classList.remove('bg-indigo-600');
+                }
+            });
+            currentTab = tabId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if(tabId === 'simulasi') {
+                updateSimulasiUI();
+            }
+            if(tabId === 'tantangan') {
+                renderChallenge();
+            }
+        }
+
+        // Pemantik checker
+        function checkPemantik() {
+            const selected = document.querySelector('input[name="pemantik"]:checked');
+            const feedback = document.getElementById('pemantik-feedback');
+            const nextBtn = document.getElementById('pemantik-next');
+            
+            if(!selected) {
+                alertBox("Pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+
+            feedback.classList.remove('hidden');
+            if(selected.value === 'B') {
+                feedback.innerHTML = "✅ Tepat Sekali! Mengalikan kedua bagian dengan bilangan yang sama membuat perbandingan tetap proporsional.";
+                feedback.className = "font-bold text-lg text-emerald-600";
+                nextBtn.classList.remove('hidden');
+                score += 15;
+            } else {
+                feedback.innerHTML = "❌ Belum tepat. Ingat bahwa rasio harus dikalikan dengan faktor yang sama agar tetap setara.";
+                feedback.className = "font-bold text-lg text-rose-600";
+            }
+        }
+
+        // Memahami answer
+        function answerMemahami(isYes) {
+            const feedback = document.getElementById('memahami-feedback');
+            feedback.classList.remove('hidden');
+            if(isYes) {
+                feedback.innerHTML = "🎉 Benar! 2 : 3 dan 6 : 9 adalah rasio senilai karena 2×3=6 dan 3×3=9.";
+                feedback.className = "font-semibold text-sm text-emerald-600";
+                score += 10;
+            } else {
+                feedback.innerHTML = "💡 Coba perhatikan lagi! 2×3=6 dan 3×3=9. Keduanya dikalikan faktor yang sama (×3), jadi jawabannya YA.";
+                feedback.className = "font-semibold text-sm text-amber-600";
+            }
+        }
+
+        // Simulasi functions
+        function changeColorCount(color, delta) {
+            if(color === 'merah') {
+                simMerah = Math.max(1, simMerah + delta);
+            } else {
+                simBiru = Math.max(1, simBiru + delta);
+            }
+            updateSimulasiUI();
+        }
+
+        function updateSimulasiUI() {
+            document.getElementById('val-merah').innerText = simMerah;
+            document.getElementById('val-biru').innerText = simBiru;
+            document.getElementById('count-m-txt').innerText = simMerah;
+            document.getElementById('count-b-txt').innerText = simBiru;
+            document.getElementById('sim-ratio-display').innerText = `${simMerah} : ${simBiru}`;
+
+            // Render color droplets grids
+            let gridM = '';
+            for(let i=0; i<simMerah; i++) {
+                gridM += `<div class="w-6 h-6 rounded-full bg-red-500 shadow-sm animate-pulse"></div>`;
+            }
+            document.getElementById('grid-merah').innerHTML = gridM;
+
+            let gridB = '';
+            for(let i=0; i<simBiru; i++) {
+                gridB += `<div class="w-6 h-6 rounded-full bg-blue-500 shadow-sm animate-pulse"></div>`;
+            }
+            document.getElementById('grid-biru').innerHTML = gridB;
+
+            // Calculate mixed color representation for liquid height & color
+            // Target base is 2:3 ratio (Red:Blue)
+            const ratioVal = simMerah / simBiru;
+            const targetRatio = 2 / 3;
+            
+            const indicator = document.getElementById('sim-indicator');
+            const explanation = document.getElementById('sim-explanation');
+            
+            if(Math.abs(ratioVal - targetRatio) < 0.01) {
+                indicator.innerText = "Rasio Tetap (Proporsional) ✨";
+                indicator.className = "text-lg font-extrabold text-emerald-600";
+                explanation.innerText = "Hebat! Perbandingan warna tetap setara dengan 2 : 3.";
+            } else {
+                indicator.innerText = "Rasio Berubah ⚠️";
+                indicator.className = "text-lg font-extrabold text-amber-600";
+                explanation.innerText = "Perbandingan berubah. Pastikan pengali kedua bilangan sama.";
+            }
+
+            // Update liquid color dynamically based on ratio mix
+            const liquid = document.getElementById('sim-liquid');
+            const total = simMerah + simBiru;
+            const redPercent = (simMerah / total) * 100;
+            const bluePercent = 100 - redPercent;
+            
+            // Approximate mix color RGB
+            const rColor = Math.round(220 * (simMerah/total) + 30 * (simBiru/total));
+            const bColor = Math.round(50 * (simMerah/total) + 200 * (simBiru/total));
+            liquid.style.backgroundColor = `rgb(${rColor}, 40, ${bColor})`;
+            liquid.style.height = Math.min(85, Math.max(25, total * 6)) + '%';
+
+            // Also update home color preview
+            const homePreview = document.getElementById('home-color-preview');
+            if(homePreview) {
+                homePreview.style.backgroundColor = `rgb(${rColor}, 40, ${bColor})`;
+            }
+        }
+
+        function ujiRasioSimulasi() {
+            const ratioVal = simMerah / simBiru;
+            const targetRatio = 2 / 3;
+            const feedbackBox = document.getElementById('sim-feedback-box');
+            feedbackBox.classList.remove('hidden');
+
+            if(Math.abs(ratioVal - targetRatio) < 0.01) {
+                feedbackBox.innerHTML = "🎉 Hebat! Perbandingan tetap proporsional dan setara dengan 2 : 3.";
+                feedbackBox.className = "mt-6 p-4 rounded-xl font-bold text-center bg-emerald-100 text-emerald-800 border border-emerald-300";
+                score += 15;
+            } else {
+                feedbackBox.innerHTML = "💡 Coba lagi. Perhatikan apakah kedua bilangan berubah dengan faktor pengali yang sama.";
+                feedbackBox.className = "mt-6 p-4 rounded-xl font-bold text-center bg-amber-100 text-amber-800 border border-amber-300";
+            }
+        }
+
+        function resetSimulasi() {
+            simMerah = 2;
+            simBiru = 3;
+            updateSimulasiUI();
+            document.getElementById('sim-feedback-box').classList.add('hidden');
+        }
+
+        // Challenge Rendering
+        function renderChallenge() {
+            const container = document.getElementById('challenge-container');
+            const c = challenges[currentChallengeIndex];
+            
+            let html = `
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs bg-indigo-100 text-indigo-700 font-bold px-3 py-1 rounded-full uppercase">Tantangan ${currentChallengeIndex + 1} dari ${challenges.length}</span>
+                        <span class="text-sm font-bold text-slate-500">Poin: 15</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">${c.title}</h3>
+                    <p class="text-slate-700 mb-4">${c.desc}</p>
+                    
+                    <div class="flex gap-3 mb-4">
+                        <input type="number" id="challenge-input" placeholder="Masukkan jawaban angka..." class="flex-grow px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white font-bold text-lg">
+                        <button onclick="checkChallengeAnswer(${c.targetAns})" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow transition">Periksa Jawaban</button>
+                    </div>
+
+                    <div id="challenge-feedback" class="font-semibold text-sm hidden p-3 rounded-xl mb-3"></div>
+                    <div id="challenge-hint" class="text-xs text-slate-500 italic hidden">💡 Petunjuk: ${c.hint}</div>
+                </div>
+
+                <div class="flex justify-between mt-4">
+                    <button onclick="prevChallenge()" ${currentChallengeIndex === 0 ? 'disabled class="opacity-50 cursor-not-allowed bg-slate-200 text-slate-500 font-bold px-4 py-2 rounded-xl text-sm"' : 'class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2 rounded-xl text-sm transition"'} >← Sebelumnya</button>
+                    <button onclick="nextChallenge()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition">Selanjutnya →</button>
+                </div>
+            `;
+            container.innerHTML = html;
+        }
+
+        function checkChallengeAnswer(correctVal) {
+            const inputVal = parseInt(document.getElementById('challenge-input').value);
+            const feedback = document.getElementById('challenge-feedback');
+            const hint = document.getElementById('challenge-hint');
+            
+            feedback.classList.remove('hidden');
+            hint.classList.remove('hidden');
+
+            if(isNaN(inputVal)) {
+                feedback.innerHTML = "⚠️ Masukkan angka terlebih dahulu.";
+                feedback.className = "font-semibold text-sm bg-amber-100 text-amber-800 p-3 rounded-xl mb-3";
+                return;
+            }
+
+            if(inputVal === correctVal) {
+                feedback.innerHTML = "✅ Benar! Hebat sekali kamu berhasil menghitung rasio dengan akurat.";
+                feedback.className = "font-semibold text-sm bg-emerald-100 text-emerald-800 p-3 rounded-xl mb-3";
+                if(challengeScores[currentChallengeIndex] === 0) {
+                    score += 15;
+                    challengeScores[currentChallengeIndex] = 15;
+                    document.getElementById('challenge-score-board').innerText = "Skor: " + score;
+                }
+            } else {
+                feedback.innerHTML = "❌ Belum tepat. Perhatikan kembali faktor pengalinya.";
+                feedback.className = "font-semibold text-sm bg-rose-100 text-rose-800 p-3 rounded-xl mb-3";
+            }
+        }
+
+        function nextChallenge() {
+            if(currentChallengeIndex < challenges.length - 1) {
+                currentChallengeIndex++;
+                renderChallenge();
+            } else {
+                switchTab('koding');
+            }
+        }
+
+        function prevChallenge() {
+            if(currentChallengeIndex > 0) {
+                currentChallengeIndex--;
+                renderChallenge();
+            }
+        }
+
+        // Code logic checker
+        function checkCodeLogic() {
+            const val = parseInt(document.getElementById('code-answer-input').value);
+            const feedback = document.getElementById('code-feedback');
+            feedback.classList.remove('hidden');
+
+            if(val === 12) {
+                feedback.innerHTML = "✅ Hebat! Robot berhasil menghitung dengan benar (8 ÷ 2 = 4 faktor, jadi 3 × 4 = 12 biru).";
+                feedback.className = "mt-3 font-semibold text-sm text-emerald-600";
+                score += 10;
+            } else {
+                feedback.innerHTML = "❌ Belum tepat. Jika merah 2 menjadi 8 (dikali 4), maka biru 3 harus dikali 4 juga!";
+                feedback.className = "mt-3 font-semibold text-sm text-rose-600";
+            }
+        }
+
+        // Group discussion
+        function revealGroupDiscussion() {
+            const box = document.getElementById('group-discussion-result');
+            box.classList.remove('hidden');
+            score += 10;
+        }
+
+        // Refleksi submission
+        function submitRefleksi() {
+            score += 10;
+            document.getElementById('final-score-val').innerText = score;
+            const predicate = score >= 70 ? "Pemahaman Rasio: Sangat Baik 🌟" : "Pemahaman Rasio: Baik 👍";
+            document.getElementById('final-predicate').innerText = predicate;
+            switchTab('hasil');
+        }
+
+        function resetApp() {
+            score = 0;
+            simMerah = 2;
+            simBiru = 3;
+            currentChallengeIndex = 0;
+            challengeScores = [0,0,0];
+            document.getElementById('challenge-score-board').innerText = "Skor: 0";
+            switchTab('beranda');
+        }
+
+        // Custom alert box replacement avoiding alert()
+        function alertBox(msg) {
+            const div = document.createElement('div');
+            div.className = 'fixed top-5 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white px-6 py-3 rounded-2xl shadow-2xl z-50 font-bold text-sm transition-all duration-300';
+            div.innerText = msg;
+            document.body.appendChild(div);
+            setTimeout(() => {
+                div.style.opacity = '0';
+                setTimeout(() => div.remove(), 300);
+            }, 2500);
+        }
+
+        // Initialize simulation UI on load
+        window.onload = function() {
+            updateSimulasiUI();
+        }
+    </script>
+</body>
+</html>
